@@ -1,0 +1,1217 @@
+:root {
+    --bg-color: #050505;
+    --card-bg: #111111;
+    --text-primary: #ffffff;
+    --text-secondary: #aaaaaa;
+    --accent-gold: #c5a059;
+    --accent-hover: #e0b040;
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    z-index: 1000;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Top Navigation Bar */
+.top-nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    /* or a comfortable height */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1001;
+    /* High z-index */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+}
+
+/* Menu Toggle */
+.menu-toggle {
+    /* Remove fixed positioning */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1002;
+    /* Ensure above nav bar layer if needed, though inside it works too */
+    color: white;
+    /* Default color */
+    gap: 5px;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    /* Smaller width */
+    height: 1px;
+    /* Thinner line */
+    background-color: white;
+    /* Default white */
+    margin: 4px 0;
+    /* More spacing for cleaner look */
+    transition: 0.4s;
+    /* Removed shadow for cleaner minimalist look */
+}
+
+.menu-toggle .menu-text {
+    display: none;
+    /* Hide text for minimalist look */
+}
+
+/* Nav Links - Full Screen Overlay */
+.nav-links {
+    display: none;
+    list-style: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: url('../Imegen%20blindaje/fondo3333.png') no-repeat center center/cover;
+    /* New background */
+    padding: 0 5% 0 0;
+    text-align: right;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1000;
+}
+
+.nav-links.active {
+    display: flex;
+}
+
+.nav-links a {
+    font-family: var(--font-heading);
+    /* Ensure consistency */
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    padding: 1rem 0;
+    display: block;
+}
+
+/* Dark Mode for Menu Toggle (when on white background) */
+.menu-toggle.dark-mode .bar {
+    background-color: #000;
+    box-shadow: none;
+}
+
+.menu-toggle.dark-mode .menu-text {
+    color: #000;
+    text-shadow: none;
+}
+
+.nav-links a:hover {
+    color: var(--accent-gold);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    z-index: 1;
+    overflow: hidden;
+    /* Ensure slides don't overflow */
+}
+
+.hero-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center 35%;
+    opacity: 0;
+    transform: translateX(-50px);
+    /* Start slightly to the left */
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Ensure slide logic works by hiding non-active ones visually but keeping them for transition */
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 20%, transparent 60%);
+    z-index: 1;
+    /* Above slider, below content */
+}
+
+.hero-bottom-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 0 5% 3rem 5%;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 900px;
+    align-items: flex-start;
+}
+
+.hero-logo img {
+    height: 120px;
+    width: auto;
+}
+
+.hero-content {
+    text-align: left;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.hero-content p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.btn-gold {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 2px solid white;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+    background-color: white;
+    color: #000;
+}
+
+/* Logo Container Removed - Now integrated in .top-nav-bar */
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+/* Section Styling */
+.section-padding {
+    padding: 6rem 5%;
+    position: relative;
+    z-index: 10;
+    background-color: var(--bg-color);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: var(--accent-gold);
+}
+
+/* Services */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.service-card {
+    background: var(--card-bg);
+    padding: 3rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-gold);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.service-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Our Work */
+.work-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.work-item {
+    height: 400px;
+    background-color: #1a1a1a;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.work-item:hover {
+    border-color: var(--accent-gold);
+}
+
+.placeholder-img {
+    font-family: var(--font-heading);
+    color: #444;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Philosophy */
+.philosophy {
+    background: linear-gradient(rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0.8)), url('../assets/images/philosophy.png');
+    background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    text-align: center;
+}
+
+.philosophy-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.philosophy-content h2 {
+    margin-bottom: 2rem;
+}
+
+.philosophy-content p {
+    font-size: 1.5rem;
+    font-style: italic;
+    font-family: var(--font-heading);
+    color: #ddd;
+    margin-bottom: 2rem;
+}
+
+.philosophy-text {
+    font-family: var(--font-body) !important;
+    font-size: 1rem !important;
+    font-style: normal !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Split Section - Elegant & Minimal */
+.split-section {
+    min-height: 100vh;
+    background: #ffffff;
+    position: relative;
+    z-index: 10;
+}
+
+.split-container {
+    display: flex;
+    min-height: 100vh;
+    align-items: stretch;
+}
+
+.split-left,
+.split-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.split-left {
+    background: #f5f5f5;
+}
+
+.split-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.4);
+    opacity: 0;
+    transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 1.5s ease-out;
+}
+
+.split-image.visible {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.split-right {
+    padding: 8rem 5rem;
+    background: #ffffff;
+}
+
+.philosophy-content-new {
+    max-width: 600px;
+}
+
+.philosophy-content-new h2 {
+    font-size: 1.8rem;
+    color: #000;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.philosophy-quote {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+}
+
+.philosophy-description {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* Content Wrapper for Sticky Reveal */
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    background-color: var(--bg-color);
+    /* Ensure opaque background */
+    margin-bottom: 100vh;
+    /* Space for the fixed section to be revealed */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Shadow to separate layers */
+}
+
+/* Philosophy Section - Fixed Bottom */
+#filosofia {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    overflow: hidden;
+    /* Prevent spillover */
+}
+
+/* Ensure philosophy content is centered/displayed correctly in fixed mode */
+#filosofia .split-container {
+    height: 100%;
+}
+
+/* Philosophy Text Staggered Animation */
+.philosophy-text-line {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.philosophy-text-line.visible {
+    animation: slideUp 1.2s ease-out forwards;
+}
+
+.philosophy-line-1.visible {
+    animation-delay: 0.2s;
+}
+
+.philosophy-line-2.visible {
+    animation-delay: 0.5s;
+}
+
+.philosophy-line-3.visible {
+    animation-delay: 0.8s;
+}
+
+/* Black Sticky Section */
+.black-sticky-section {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../Imegen%20blindaje/fondo3333.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.black-content {
+    width: 100%;
+    max-width: 1200px;
+    padding: 4rem 5%;
+    color: var(--text-primary);
+}
+
+/* Footer */
+.footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 4rem 5% 2rem;
+    background: #ffffff;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-logo img {
+    height: 60px;
+    /* Adjust size as needed */
+    width: auto;
+    display: block;
+    margin-bottom: 1rem;
+    /* Add spacing if needed */
+}
+
+.footer-info p {
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.footer-social a {
+    color: #000;
+    margin-right: 1.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: #999;
+    font-size: 0.8rem;
+}
+
+/* Stacking Cards Section */
+.stacking-section {
+    position: relative;
+    z-index: 20;
+    /* Above fixed philosophy */
+    background-color: var(--bg-color);
+    padding: 6rem 5% 10rem 5%;
+    /* Bottom padding for scroll space */
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+.cards-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.shield-card {
+    position: sticky;
+    top: 120px;
+    /* Base sticky position */
+    height: 70vh;
+    /* Card Height */
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px 20px 0 0;
+    /* Tab shape */
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 0;
+    /* Remove margin so they sit flush */
+    padding-bottom: 50px;
+    /* Compensation */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Content at top */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Stacking Offsets - Tabs */
+.card-1 {
+    top: 120px;
+}
+
+.card-2 {
+    top: 180px;
+}
+
+/* +60px */
+.card-3 {
+    top: 240px;
+}
+
+/* +60px */
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    padding: 1.5rem 3rem;
+    /* Header padding */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    /* Semi-transparent header */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    /* Smaller title */
+    color: white;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-level {
+    font-family: var(--font-heading);
+    color: var(--accent-gold);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.card-body {
+    position: relative;
+    z-index: 2;
+    padding: 3rem;
+    width: 100%;
+    margin-top: auto;
+    /* Push description down if needed, or remove to keep at top */
+}
+
+.card-description {
+    font-size: 1.2rem;
+    color: #ddd;
+    max-width: 600px;
+}
+
+/* Mobile Responsive For Cards */
+@media (max-width: 768px) {
+    .shield-card {
+        height: 60vh;
+        top: 100px;
+    }
+
+    .card-1 {
+        top: 100px;
+    }
+
+    .card-2 {
+        top: 130px;
+    }
+
+    .card-3 {
+        top: 160px;
+    }
+
+    .card-content h3 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero Title Staggered Animation */
+.title-line {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideUp 1.2s ease-out forwards, shineTitle 3s linear 1.5s 1 forwards;
+    background: linear-gradient(90deg,
+            #ffffff 0%,
+            #ffffff 45%,
+            #e3d4b5 50%,
+            #ffffff 55%,
+            #ffffff 100%);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@keyframes shineTitle {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.line-1 {
+    animation-delay: 0.3s;
+}
+
+.line-2 {
+    animation-delay: 0.6s;
+}
+
+.subtitle-fade {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 1s ease-out forwards;
+    animation-delay: 0.9s;
+}
+
+.btn-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 1s ease-out forwards;
+    animation-delay: 1.1s;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .btn-cta {
+        font-size: 0.6rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .hero {
+        background-image: url('../Imegen%20blindaje/Gemini_Generated_Image_7cfev37cfev37cfe.png');
+        background-position: center center;
+        align-items: center;
+        /* Center alignment */
+        justify-content: center;
+    }
+
+    /* Add Black Gradient for Readability - Adjusted for Center */
+    .hero::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Full overlay for center readability */
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.8) 100%);
+        z-index: 1;
+    }
+
+    .hero-bottom-content {
+        justify-content: center;
+        /* Center vertical */
+        padding-bottom: 0;
+        padding-top: 0;
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        /* Full height */
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-left {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .hero-logo img {
+        height: 80px;
+        /* You might want to position this at the top absolute if it shouldn't be bottom */
+    }
+
+    /* If logo should stay top, we need to treat it separately. 
+       Assuming logo is inside .top-nav-bar now? 
+       Wait, previous code had .hero-logo inside .hero-bottom-content? 
+       No, header moved to top-nav-bar. 
+       Let's check Index.html. 
+       Line 54: .hero-bottom-content contains .hero-left which contains .hero-content.
+       Logo is in .top-nav-bar fixed at top. So no conflict. 
+    */
+
+    .top-nav-bar {
+        height: 60px;
+        padding: 0 1.5rem;
+    }
+
+    .nav-logo img {
+        height: 35px;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        position: static;
+        margin-bottom: 2rem;
+        /* Space between title and button */
+    }
+
+    /* Disable transform animation on mobile to allow fixed button positioning */
+    .hero-content.fade-in,
+    .hero-content.visible {
+        transform: none !important;
+        opacity: 1 !important;
+    }
+
+    .hero-content h1,
+    .hero-content .title-line {
+        font-size: 1.5rem;
+        /* Reduced to fit on 2 lines */
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+        background: none;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        color: #ddd !important;
+        font-weight: 500;
+        margin-top: 0.5rem;
+    }
+
+    .btn-gold {
+        padding: 0.8rem 2.5rem;
+        font-size: 0.9rem;
+        background-color: transparent;
+        color: #ffffff;
+        border: 1px solid #ffffff;
+        position: absolute;
+        bottom: 8vh;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        transform: none;
+        width: fit-content;
+        min-width: 150px;
+        text-align: center;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+
+    .work-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    /* Split Section Mobile */
+    .split-container {
+        flex-direction: column-reverse;
+        /* Text first (bottom in code), then Image (top in code) -> so reverse puts text top? Wait. 
+           Code order: Left (Image), Right (Text). 
+           Row: Image | Text.
+           Column: Image (top) | Text (bottom).
+           Column-Reverse: Text (top) | Image (bottom). 
+           YES.
+        */
+    }
+
+    .split-left {
+        min-height: 50vh;
+        width: 100%;
+        position: relative;
+        /* Ensure child absolute position works if needed, standardizing container */
+        display: block;
+        /* Ensure it takes up space */
+    }
+
+    .split-image {
+        position: absolute;
+        /* or static depending on implementation, usually absolute for zoom effect */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .split-right {
+        padding: 3rem 1.5rem;
+        /* Symmetric padding */
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        /* Center text */
+    }
+
+    .philosophy-content-new {
+        max-width: 100%;
+        margin: 0 auto;
+        /* Center container */
+    }
+
+    .philosophy-content-new h2 {
+        font-size: 1.1rem !important;
+        line-height: 1.4;
+        white-space: normal !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: manual;
+        text-align: center !important;
+        width: 100%;
+        letter-spacing: 1px !important;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .philosophy-quote {
+        font-size: 1.2rem;
+        /* Reduced from 1.4rem */
+    }
+
+    .philosophy-description {
+        font-size: 0.95rem;
+        /* Slightly smaller text */
+        line-height: 1.6;
+    }
+}
+
+
+/* Black Section Split & Grid */
+.black-sticky-section,
+.services-section {
+    position: relative;
+    display: block;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    /* Forced full height for reveal effect */
+    /* Ensure it takes space */
+    background: #fff;
+    /* or black depending on preference, but grid has its own bg */
+    z-index: 10;
+    /* Ensure it covers the sticky hero */
+}
+
+.black-split-layout {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.black-left {
+    flex: 1;
+    /* Transparent to show the section background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.black-right {
+    flex: 1;
+    height: 100%;
+    background: #fff;
+    /* Base for the grid */
+}
+
+.services-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+    width: 100%;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.text-item {
+    background-color: #f5f5f5;
+    color: #000;
+}
+
+.image-item {
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    /* Full image */
+}
+
+.floating-grid-img {
+    position: absolute;
+    width: 120%;
+    /* Slightly larger for movement */
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    will-change: transform;
+    transition: transform 0.1s linear;
+    object-fit: cover;
+    min-height: 100%;
+}
+
+.text-item h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #000;
+    font-family: var(--font-heading);
+    /* Ensure heading font */
+    font-weight: 600;
+}
+
+.text-item p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    font-family: var(--font-body);
+    /* Ensure body font */
+}
+
+.btn-black {
+    background-color: #000;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: background 0.3s ease;
+}
+
+.btn-black:hover {
+    background-color: #333;
+}
+
+/* Mobile Responsive for Grid and Layout */
+@media (max-width: 768px) {
+    .services-section {
+        height: auto;
+        /* Allow scrolling on mobile */
+    }
+
+    .black-split-layout {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .black-left {
+        display: none;
+    }
+
+    .black-right {
+        width: 100%;
+    }
+
+    .services-grid-2x2 {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .grid-item {
+        min-height: 300px;
+        padding: 2rem;
+    }
+
+    /* Disable Sticky Reveal on Mobile for better UX */
+    .content-wrapper {
+        margin-bottom: 0;
+    }
+
+    #filosofia {
+        position: relative;
+        height: auto;
+        min-height: 60vh;
+        z-index: 5;
+    }
+
+    #filosofia .split-container {
+        flex-direction: column-reverse;
+    }
+
+    .split-image {
+        position: relative;
+        height: 40vh;
+        /* Give image some height */
+    }
+
+    /* Stacking Cards Mobile Adjustments */
+    .stacking-section {
+        padding: 4rem 1.5rem 6rem 1.5rem;
+    }
+
+    .shield-card {
+        height: 60vh;
+        margin-bottom: 2rem;
+        /* Add spacing if sticky behavior feels cramped, or keep 0 */
+    }
+
+    .card-content {
+        padding: 1.5rem;
+        /* Reduce padding */
+        flex-direction: column;
+        /* Stack title and level */
+        align-items: flex-start;
+    }
+
+    .card-content h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+
+    .card-description {
+        font-size: 1rem;
+    }
+}

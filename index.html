@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Armor | Blindaje Vehicular de Alto Nivel</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css?v=19">
+</head>
+
+<body>
+
+    <!-- Top Navigation Bar (Fixed) -->
+    <header class="top-nav-bar">
+        <div class="nav-logo">
+            <img src="Logo/logoarmored.png" alt="Elite Armor Logo">
+        </div>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="menu-text">MENU</span>
+        </div>
+    </header>
+
+    <!-- Navigation Links Overlay -->
+    <ul class="nav-links">
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#trabajo">Nuestro Trabajo</a></li>
+        <li><a href="#filosofia">Filosofía</a></li>
+        <li><a href="#footer">Contacto</a></li>
+    </ul>
+
+    <!-- Content Wrapper for Reveal Effect -->
+    <div class="content-wrapper">
+
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-slider">
+                <div class="hero-slide active"
+                    style="background-image: url('carrusel/Gemini_Generated_Image_bo8ounbo8ounbo8o.png');"></div>
+                <div class="hero-slide"
+                    style="background-image: url('carrusel/Gemini_Generated_Image_gi6wagi6wagi6wag.png');"></div>
+                <div class="hero-slide"
+                    style="background-image: url('carrusel/Gemini_Generated_Image_mdy0ssmdy0ssmdy0.png');"></div>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-bottom-content">
+                <div class="hero-left">
+                    <div class="hero-content fade-in">
+                        <h1>
+                            <span class="title-line line-1">Seguridad Invisible</span><br>
+                            <span class="title-line line-2">Protección Absoluta</span>
+                        </h1>
+                        <p class="subtitle-fade">Tu tranquilidad es nuestra prioridad.</p>
+                        <a href="#servicios" class="btn-gold btn-fade">COTIZAR</a>
+                    </div>
+                </div>
+                <div class="scroll-indicator">
+                    <svg width="30" height="50" viewBox="0 0 30 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="1" width="28" height="48" rx="14" stroke="white" stroke-width="2" />
+                        <circle cx="15" cy="15" r="4" fill="white">
+                            <animate attributeName="cy" values="15;35;15" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section (2x2 Grid) -->
+        <section id="servicios" class="services-section">
+            <div class="services-grid-2x2">
+                <!-- Item 1: Text -->
+                <div class="grid-item text-item light-bg">
+                    <h3>Blindaje</h3>
+                    <p>En Blindajes Armored Security los vehículos se prueban bajo las normas de calidad vigentes y
+                        se trabaja con la premisa de cuidar la seguridad de los clientes.</p>
+                    <a href="#" class="btn-black">Ver más</a>
+                </div>
+                <!-- Item 2: Image (Car 1) -->
+                <div class="grid-item image-item dark-bg">
+                    <img src="Imegen blindaje/fondointernr.png" alt="Blindaje" class="floating-grid-img" data-speed="2">
+                </div>
+                <!-- Item 3: Image (Car 2) -->
+                <div class="grid-item image-item dark-bg">
+                    <img src="Imegen blindaje/Gemini_Generated_Image_ynirlmynirlmynir.png" alt="Vidrio Automotriz"
+                        class="floating-grid-img" data-speed="-1.5">
+                </div>
+                <!-- Item 4: Text -->
+                <div class="grid-item text-item light-bg">
+                    <h3>Vidrio Automotriz</h3>
+                    <p>En Blindajes Armored Security los vidrios se elaboran bajo las normas de calidad mas
+                        estrictas y con la premisa de garantizar la resistencia balística.</p>
+                    <a href="#" class="btn-black">Ver más</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Philosophy Section (Previously Top) -->
+    <section id="filosofia" class="split-section">
+        <div class="split-container">
+            <div class="split-left">
+                <div class="split-image" style="background-image: url('Imegen blindaje/fondointernr.png');"></div>
+            </div>
+            <div class="split-right">
+                <div class="philosophy-content-new">
+                    <h2 class="philosophy-text-line philosophy-line-1">Blindajes Armored Security</h2>
+                    <p class="philosophy-description philosophy-text-line philosophy-line-2">Somos una empresa mexicana
+                        cuyo principal objetivo es satisfacer necesidades de seguridad, a través de: equipamiento,
+                        cursos de capacitación y blindajes, así como con la venta de equipos de seguridad a
+                        instituciones públicas y privadas con insumos de valor agregado y tecnologías de vanguardia.</p>
+                    <p class="philosophy-description philosophy-text-line philosophy-line-3">Las instituciones más
+                        prestigiadas del país han sido testigos de la experiencia y profesionalismo de Armored Security.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shielding Levels (Stacking Cards) -->
+    <section id="shielding-levels" class="stacking-section">
+        <div class="section-header">
+            <h2 class="section-title">Niveles de Blindaje</h2>
+            <p class="section-subtitle">Protección adaptada a cada escenario de riesgo</p>
+        </div>
+
+        <div class="cards-container">
+            <!-- Card 1: Delincuencia Urbana -->
+            <div class="shield-card card-1" style="background-image: url('Imegen blindaje/bg_urban.png');">
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <h3>Delincuencia Urbana</h3>
+                    <p class="card-level">Nivel 2 | Nivel 3</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">Protección contra asaltos comunes y robo de vehículos. Ideal para uso
+                        diario en ciudades.</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Delincuencia Organizada -->
+            <div class="shield-card card-2" style="background-image: url('Imegen blindaje/bg_organized.png');">
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <h3>Delincuencia Organizada</h3>
+                    <p class="card-level">Nivel 4 | Nivel 5</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">Resistencia contra armas largas y ataques coordinados. Seguridad para
+                        ejecutivos y funcionarios.</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Atentados -->
+            <div class="shield-card card-3" style="background-image: url('Imegen blindaje/bg_terror.png');">
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <h3>Atentados y Terrorismo</h3>
+                    <p class="card-level">Nivel 6 | Nivel 7</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">Máxima protección contra armamento militar, explosivos y munición
+                        perforante.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="Logo/logoarmored.png" alt="Elite Armor Logo">
+                </div>
+                <div class="footer-info">
+                    <p>Ciudad de México, México</p>
+                    <p>contacto@elitearmor.com</p>
+                    <p>+52 55 1234 5678</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Elite Armor. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
