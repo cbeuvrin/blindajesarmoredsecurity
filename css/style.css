@@ -3,8 +3,10 @@
     --card-bg: #111111;
     --text-primary: #ffffff;
     --text-secondary: #aaaaaa;
-    --accent-gold: #c5a059;
-    --accent-hover: #e0b040;
+    --accent-gold: #ce1126;
+    /* Changed to Red from Logo */
+    --accent-hover: #ff1f3a;
+    /* Brighter Red for Hover */
     --font-heading: 'Cinzel', serif;
     --font-body: 'Montserrat', sans-serif;
 }
