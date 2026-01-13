@@ -127,7 +127,7 @@ a {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: url('../Imegen%20blindaje/fondo3333.png') no-repeat center center/cover;
+    background: url('../assets/images/fondo3333.png') no-repeat center center/cover;
     /* New background */
     padding: 0 5% 0 0;
     text-align: right;
@@ -532,7 +532,7 @@ a {
 .black-sticky-section {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../Imegen%20blindaje/fondo3333.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../assets/images/fondo3333.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -817,7 +817,7 @@ a {
     }
 
     .hero {
-        background-image: url('../Imegen%20blindaje/Gemini_Generated_Image_7cfev37cfev37cfe.png');
+        background-image: url('../assets/images/Gemini_Generated_Image_7cfev37cfev37cfe.png');
         background-position: center center;
         align-items: center;
         /* Center alignment */
