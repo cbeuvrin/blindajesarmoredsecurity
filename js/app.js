@@ -148,4 +148,26 @@ document.addEventListener('DOMContentLoaded', () => {
             slides[currentSlide].classList.add('active');
         }, 5000); // 5 seconds
     }
+
+    // Active Link Highlighting
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navItems.forEach(li => {
+            li.classList.remove('active');
+            if (current && li.getAttribute('href').includes(current)) {
+                li.classList.add('active');
+            }
+        });
+    });
 });
