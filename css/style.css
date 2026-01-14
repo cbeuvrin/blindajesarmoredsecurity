@@ -104,8 +104,8 @@ a {
 .menu-toggle .bar {
     width: 25px;
     height: 1px;
-    background-color: var(--accent-gold);
-    /* Red Hamburger */
+    background-color: #000000;
+    /* Black Hamburger */
     margin: 4px 0;
     transition: 0.4s;
 }
